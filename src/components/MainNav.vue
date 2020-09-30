@@ -8,7 +8,7 @@
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
           <!-- <template v-if="isAuthenticated"> -->
-            <b-nav-item to="/albums/mine">My Albums</b-nav-item>
+            <b-nav-item to="/upload">Upload</b-nav-item>
           <!-- </template> -->
         </b-navbar-nav>
 
