@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
   data() {
@@ -65,17 +65,24 @@ export default {
       return this.image.type &&
         (this.image.file && this.image.file.length > 0);
     },
-    ...mapGetters(['isUploading', 'success', 'error']),
+    ...mapGetters('uploadImage', [
+      'isUploading',
+      'success',
+      'error'
+    ]),
     hasSuccess: function() { return this.success !== null; }
   },
   methods: {
+    ...mapActions('uploadImage', [
+      'uploadImage'
+    ]),
     async uploadPhoto() {
       const data = {
         imageType: this.image.type,
         file: this.image.file[0] // should only be 1 file
       };
 
-      await this.$store.dispatch('uploadImage', data);
+      await this.uploadImage(data);
     }
   }
 };
